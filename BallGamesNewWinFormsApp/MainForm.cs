@@ -9,7 +9,8 @@ namespace BallGamesNewWinFormsApp
 
         private void drawingButton_Click(object sender, EventArgs e)
         {
-
+            var ball = new Ball(this);
         }
+
     }
 }
