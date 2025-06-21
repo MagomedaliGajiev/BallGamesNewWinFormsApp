@@ -2,11 +2,20 @@
 {
     public class Ball
     {
+        private MainForm _form;
+        protected int _x = 150;
+        protected int _y = 150;
+        protected int _size = 50;
         public Ball(MainForm form)
         {
-            var graphics = form.CreateGraphics();
+            _form = form;
+        }
+
+        public void Show()
+        {
+            var graphics = _form.CreateGraphics();
             var brush = Brushes.Aqua;
-            var rectangle = new Rectangle(150, 150, 50, 50);
+            var rectangle = new Rectangle(_x, _y, _size, _size);
             graphics.FillEllipse(brush, rectangle);
         }
     }

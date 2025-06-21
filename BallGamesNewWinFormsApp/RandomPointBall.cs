@@ -1,18 +1,13 @@
 ﻿namespace BallGamesNewWinFormsApp
 {
-    public class RandomPointBall
+    public class RandomPointBall : Ball
     {
-        private static Random _random = new Random();
+        protected static Random _random = new Random();
 
-        public RandomPointBall(MainForm form)
+        public RandomPointBall(MainForm form) : base(form)
         {
-            var graphics = form.CreateGraphics();
-            var brush = Brushes.Aqua;
-            var x = _random.Next(0, form.ClientSize.Width);
-            var y = _random.Next(0, form.ClientSize.Height);
-            var rectangle = new Rectangle(x, y, 50, 50);
-            graphics.FillEllipse(brush, rectangle);
+            _x = _random.Next(0, form.ClientSize.Width);
+            _y = _random.Next(0, form.ClientSize.Height);
         }
     }
-
 }
