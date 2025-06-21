@@ -12,5 +12,9 @@ namespace BallGamesNewWinFormsApp
             var ball = new Ball(this);
         }
 
+        private void randomPointDrawingButton_Click(object sender, EventArgs e)
+        {
+            var randomPointBall = new RandomPointBall(this);
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             drawingButton = new Button();
-            button1 = new Button();
+            randomPointDrawingButton = new Button();
             SuspendLayout();
             // 
             // drawingButton
@@ -42,21 +42,22 @@
             drawingButton.UseVisualStyleBackColor = true;
             drawingButton.Click += drawingButton_Click;
             // 
-            // button1
+            // randomPointDrawingButton
             // 
-            button1.Location = new Point(467, 28);
-            button1.Name = "button1";
-            button1.Size = new Size(179, 42);
-            button1.TabIndex = 1;
-            button1.Text = "Рисовать лучайный шарик";
-            button1.UseVisualStyleBackColor = true;
+            randomPointDrawingButton.Location = new Point(467, 28);
+            randomPointDrawingButton.Name = "randomPointDrawingButton";
+            randomPointDrawingButton.Size = new Size(179, 42);
+            randomPointDrawingButton.TabIndex = 1;
+            randomPointDrawingButton.Text = "Рисовать случайный шарик";
+            randomPointDrawingButton.UseVisualStyleBackColor = true;
+            randomPointDrawingButton.Click += randomPointDrawingButton_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(randomPointDrawingButton);
             Controls.Add(drawingButton);
             Name = "MainForm";
             Text = "Мячики";
@@ -66,6 +67,6 @@
         #endregion
 
         private Button drawingButton;
-        private Button button1;
+        private Button randomPointDrawingButton;
     }
 }
