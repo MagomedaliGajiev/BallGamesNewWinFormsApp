@@ -10,7 +10,7 @@
             var brush = Brushes.Aqua;
             var x = _random.Next(0, form.ClientSize.Width);
             var y = _random.Next(0, form.ClientSize.Height);
-            var rectangle = new Rectangle(x, y, 100, 100);
+            var rectangle = new Rectangle(x, y, 50, 50);
             graphics.FillEllipse(brush, rectangle);
         }
     }
