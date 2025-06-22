@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Balls.Common
+﻿namespace Balls.Common
 {
     public class Ball
     {
@@ -77,9 +75,9 @@ namespace Balls.Common
         public virtual bool Contains(Point point)
         {
             // Проверка попадания точки в шарик
-            var centerX = _x + _size / 2;
-            var centerY = _y + _size / 2;
             var radius = _size / 2;
+            var centerX = radius;
+            var centerY = radius;
 
             return (point.X - centerX) * (point.X - centerX) +
                    (point.Y - centerY) * (point.Y - centerY) <=
