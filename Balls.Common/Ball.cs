@@ -1,4 +1,6 @@
-﻿namespace Balls.Common
+﻿using System.Windows.Forms;
+
+namespace Balls.Common
 {
     public class Ball
     {
@@ -63,7 +65,16 @@
                    _y + _size < _form.ClientSize.Height;
         }
 
-        public bool Contains(Point point)
+        // Проверяет, улетел ли шарик за пределы формы
+        public virtual bool IsOutOfForm()
+        {
+            return _x + _size < 0 ||
+                   _y + _size < 0 ||
+                   _x > _form.ClientSize.Width ||
+                   _y > _form.ClientSize.Height;
+        }
+
+        public virtual bool Contains(Point point)
         {
             // Проверка попадания точки в шарик
             var centerX = _x + _size / 2;

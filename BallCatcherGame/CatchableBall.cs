@@ -12,8 +12,8 @@ namespace BallCatcherGame
             _size = _random.Next(30, 70);
             _x = _random.Next(0, _form.ClientSize.Width - _size);
             _y = _random.Next(0, _form.ClientSize.Height - _size);
-            _vX = _random.Next(-25, 26);
-            _vY = _random.Next(-25, 26);
+            _vX = _random.Next(-5, 6);
+            _vY = _random.Next(-5, 6);
 
             // Гарантируем движение
             if (_vX == 0) _vX = 1;
