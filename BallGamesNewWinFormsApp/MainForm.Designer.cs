@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            drawingButton = new Button();
             randomPointDrawingButton = new Button();
+            stopButton = new Button();
+            CreateBallsButton = new Button();
             SuspendLayout();
-            // 
-            // drawingButton
-            // 
-            drawingButton.Location = new Point(652, 28);
-            drawingButton.Name = "drawingButton";
-            drawingButton.Size = new Size(127, 42);
-            drawingButton.TabIndex = 0;
-            drawingButton.Text = "Рисовать шарик";
-            drawingButton.UseVisualStyleBackColor = true;
-            drawingButton.Click += drawingButton_Click;
             // 
             // randomPointDrawingButton
             // 
-            randomPointDrawingButton.Location = new Point(467, 28);
+            randomPointDrawingButton.Location = new Point(438, 12);
             randomPointDrawingButton.Name = "randomPointDrawingButton";
             randomPointDrawingButton.Size = new Size(179, 42);
             randomPointDrawingButton.TabIndex = 1;
@@ -52,13 +43,34 @@
             randomPointDrawingButton.UseVisualStyleBackColor = true;
             randomPointDrawingButton.Click += randomPointDrawingButton_Click;
             // 
+            // stopButton
+            // 
+            stopButton.Location = new Point(623, 42);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(155, 42);
+            stopButton.TabIndex = 2;
+            stopButton.Text = "Остановить все шарики";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += stopButton_Click;
+            // 
+            // CreateBallsButton
+            // 
+            CreateBallsButton.Location = new Point(438, 71);
+            CreateBallsButton.Name = "CreateBallsButton";
+            CreateBallsButton.Size = new Size(179, 42);
+            CreateBallsButton.TabIndex = 3;
+            CreateBallsButton.Text = "Много шариков";
+            CreateBallsButton.UseVisualStyleBackColor = true;
+            CreateBallsButton.Click += CreateBallsButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(CreateBallsButton);
+            Controls.Add(stopButton);
             Controls.Add(randomPointDrawingButton);
-            Controls.Add(drawingButton);
             Name = "MainForm";
             Text = "Мячики";
             MouseDown += MainForm_MouseDown;
@@ -66,8 +78,8 @@
         }
 
         #endregion
-
-        private Button drawingButton;
         private Button randomPointDrawingButton;
+        private Button stopButton;
+        private Button CreateBallsButton;
     }
 }
