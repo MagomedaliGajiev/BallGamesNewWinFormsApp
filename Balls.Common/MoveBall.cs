@@ -1,6 +1,4 @@
-﻿using Timer = System.Windows.Forms.Timer;
-
-namespace Balls.Common
+﻿namespace Balls.Common
 {
     public class MoveBall : RandomSizeAndPointBall
     {
