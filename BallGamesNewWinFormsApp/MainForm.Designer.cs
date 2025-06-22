@@ -61,7 +61,7 @@
             CreateBallsButton.TabIndex = 3;
             CreateBallsButton.Text = "Много шариков";
             CreateBallsButton.UseVisualStyleBackColor = true;
-            CreateBallsButton.Click += CreateBallsButton_Click;
+            CreateBallsButton.Click += createBallsButton_Click;
             // 
             // MainForm
             // 

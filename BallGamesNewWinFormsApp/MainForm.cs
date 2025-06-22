@@ -4,7 +4,7 @@ namespace BallGamesNewWinFormsApp
 {
     public partial class MainForm : Form
     {
-        private List<MoveBall> _moveBalls;
+        private List<MoveBall> _moveBalls = new List<MoveBall>();
         private PointBall _pointBall;
         public MainForm()
         {
@@ -24,16 +24,29 @@ namespace BallGamesNewWinFormsApp
 
         private void stopButton_Click(object sender, EventArgs e)
         {
+            var caughtBallsCount = 0;
+            foreach (var ball in _moveBalls)
+            {
+                ball.Stop();
+                if (ball.IsOnForm())
+                {
+                    caughtBallsCount++;
+                }
+            }
+            MessageBox.Show($"Поймано шариков: {caughtBallsCount} из {_moveBalls.Count}");
+        }
+
+        private void createBallsButton_Click(object sender, EventArgs e)
+        {
+            // Остановить и очистить предыдущие шарики
             foreach (var ball in _moveBalls)
             {
                 ball.Stop();
             }
-        }
+            _moveBalls.Clear();
 
-        private void CreateBallsButton_Click(object sender, EventArgs e)
-        {
-            _moveBalls = new List<MoveBall>();
-            for (int i = 0; i < 10; i++)
+            // Создать новые шарики (15 штук)
+            for (int i = 0; i < 15; i++)
             {
                 var moveBall = new MoveBall(this);
                 _moveBalls.Add(moveBall);
