@@ -1,11 +1,11 @@
 ﻿using Timer = System.Windows.Forms.Timer;
 
-namespace BallGamesNewWinFormsApp
+namespace Balls.Common
 {
     public class MoveBall : RandomSizeAndPointBall
     {
         private Timer _timer;
-        public MoveBall(MainForm form) : base(form)
+        public MoveBall(Form form) : base(form)
         {
             _timer = new Timer();
             _timer.Interval = 20;

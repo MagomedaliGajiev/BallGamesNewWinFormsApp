@@ -1,3 +1,5 @@
+using Balls.Common;
+
 namespace BallGamesNewWinFormsApp
 {
     public partial class MainForm : Form

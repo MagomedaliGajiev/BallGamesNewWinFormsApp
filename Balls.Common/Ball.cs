@@ -1,14 +1,14 @@
-﻿namespace BallGamesNewWinFormsApp
+﻿namespace Balls.Common
 {
     public class Ball
     {
-        private MainForm _form;
+        private Form _form;
         private int _vX = 3;
         private int _vY = 3;
         protected int _x = 150;
         protected int _y = 150;
         protected int _size = 50;
-        public Ball(MainForm form)
+        public Ball(Form form)
         {
             _form = form;
         }

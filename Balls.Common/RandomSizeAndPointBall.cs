@@ -1,8 +1,10 @@
-﻿namespace BallGamesNewWinFormsApp
+﻿using BallGamesNewWinFormsApp;
+
+namespace Balls.Common
 {
     public class RandomSizeAndPointBall : RandomPointBall
     {
-        public RandomSizeAndPointBall(MainForm form) : base(form)
+        public RandomSizeAndPointBall(Form form) : base(form)
         {
             _size = _random.Next(30, 80);
         }
