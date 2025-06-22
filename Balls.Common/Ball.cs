@@ -28,6 +28,17 @@
         {
             _x += _vX;
             _y += _vY;
+
+            //// Обработка столкновений с границами
+            //if (_x <= 0 || _x + _size >= _form.ClientSize.Width)
+            //{
+            //    _vX = -_vX;
+            //}
+
+            //if (_x <= 0 || _x + _size >= _form.ClientSize.Height)
+            //{
+            //    _vY = -_vY;
+            //}
         }
 
         public virtual void EnsureOnForm(Size clientSize)
@@ -51,5 +62,20 @@
                    _x + _size < _form.ClientSize.Width &&
                    _y + _size < _form.ClientSize.Height;
         }
+
+        public bool Contains(Point point)
+        {
+            // Проверка попадания точки в шарик
+            var centerX = _x + _size / 2;
+            var centerY = _y + _size / 2;
+            var radius = _size / 2;
+
+            return (point.X - centerX) * (point.X - centerX) +
+                   (point.Y - centerY) * (point.Y - centerY) <=
+                   radius * radius;
+        }
+
+
+
     }
 }
