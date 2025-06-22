@@ -74,8 +74,5 @@
                    (point.Y - centerY) * (point.Y - centerY) <=
                    radius * radius;
         }
-
-
-
     }
 }
