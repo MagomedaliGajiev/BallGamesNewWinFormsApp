@@ -3,8 +3,8 @@
     public class Ball
     {
         private Form _form;
-        private int _vX = 3;
-        private int _vY = 3;
+        protected int _vX = 3;
+        protected int _vY = 3;
         protected int _x = 150;
         protected int _y = 150;
         protected int _size = 50;
