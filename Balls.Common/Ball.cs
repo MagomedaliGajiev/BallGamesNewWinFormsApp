@@ -21,6 +21,14 @@
             graphics.FillEllipse(brush, rectangle);
         }
 
+        public virtual bool IsOnForm()
+        {
+            return _x > 0 &&
+                   _y > 0 &&
+                   _x + _size > _form.ClientSize.Width &&
+                   _y + _size > _form.ClientSize.Height;
+        }
+
         public void Move()
         {
             Clear();
