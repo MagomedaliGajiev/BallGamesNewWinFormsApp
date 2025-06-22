@@ -8,8 +8,9 @@ namespace BallGamesNewWinFormsApp
 
         public RandomPointBall(Form form) : base(form)
         {
-            _x = _random.Next(0, form.ClientSize.Width);
-            _y = _random.Next(0, form.ClientSize.Height);
+            _size = 50;
+            _x = _random.Next(0, form.ClientSize.Width - _size);
+            _y = _random.Next(0, form.ClientSize.Height - _size);
         }
     }
 }

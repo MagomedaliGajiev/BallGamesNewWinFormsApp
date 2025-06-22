@@ -30,6 +30,12 @@
             _y += _vY;
         }
 
+        public virtual void EnsureOnForm(Size clientSize)
+        {
+            _x = Math.Max(0, Math.Min(_x, clientSize.Width - _size));
+            _y = Math.Max(0, Math.Min(_y, clientSize.Height - _size));
+        }
+
         public void Show()
         {
             var graphics = _form.CreateGraphics();

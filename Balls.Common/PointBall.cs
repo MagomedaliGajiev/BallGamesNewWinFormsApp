@@ -6,6 +6,7 @@
         {
             _x = x - _size / 2;
             _y = y - _size / 2;
+            _size = 50;
         }
     }
 }
