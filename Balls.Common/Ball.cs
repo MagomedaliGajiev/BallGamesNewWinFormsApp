@@ -1,4 +1,6 @@
-﻿namespace Balls.Common
+﻿using System.Windows.Forms;
+
+namespace Balls.Common
 {
     public class Ball
     {
@@ -76,8 +78,8 @@
         {
             // Проверка попадания точки в шарик
             var radius = _size / 2;
-            var centerX = radius;
-            var centerY = radius;
+            var centerX = _x + radius;
+            var centerY = _y + radius;
 
             return (point.X - centerX) * (point.X - centerX) +
                    (point.Y - centerY) * (point.Y - centerY) <=
