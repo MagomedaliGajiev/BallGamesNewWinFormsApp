@@ -1,6 +1,4 @@
-﻿using Balls.Common;
-
-namespace BallCatcherGame
+﻿namespace Balls.Common
 {
     public class CatchableBall : Ball
     {
