@@ -28,4 +28,3 @@ namespace BallCatcherGame
         }
     }
 }
-1
