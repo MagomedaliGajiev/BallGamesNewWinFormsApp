@@ -1,5 +1,4 @@
 using Balls.Common;
-using System.Security.Cryptography;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BallGamesNewWinFormsApp
@@ -21,7 +20,7 @@ namespace BallGamesNewWinFormsApp
             SetStyle(ControlStyles.UserPaint, true);
 
             // Обновление стилей
-            this.UpdateStyles();
+            UpdateStyles();
 
             SetupDoubleBuffering();
             InitializeTimer();
@@ -97,7 +96,7 @@ namespace BallGamesNewWinFormsApp
                 foreach (var ball in _moveBalls)
                 {
                     // Корректируем положение шариков, если они вышли за границы
-                    ball.EnsureOnForm(this.ClientSize);
+                    ball.EnsureOnForm(ClientSize);
                 }
             }
 
