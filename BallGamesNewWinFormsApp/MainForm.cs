@@ -5,7 +5,7 @@ namespace BallGamesNewWinFormsApp
 {
     public partial class MainForm : Form
     {
-        private List<MoveBall> _balls = new List<MoveBall>();
+        private List<Ball> _balls = new List<Ball>();
         private PointBall _pointBall;
         private Timer _timer;
         private BufferedGraphicsContext _context;
@@ -147,7 +147,7 @@ namespace BallGamesNewWinFormsApp
             }
             else
             {
-                _balls = new List<MoveBall>();
+                _balls = new List<Ball>();
             }
 
             for (int i = 0; i < 15; i++)
