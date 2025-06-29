@@ -3,8 +3,8 @@ namespace BiliyardBallsGame
     public partial class BillyardForm : Form
     {
         private const int BallCount = 10;
-        private readonly List<BillyardBall> _leftBalls = new();
-        private readonly List<BillyardBall> _rightBalls = new();
+        private readonly List<BillyardBall> _redBalls = new();
+        private readonly List<BillyardBall> _blueBalls = new();
         private readonly List<BillyardBall> _allBalls = new();
         private readonly System.Windows.Forms.Timer timer = new();
         public BillyardForm()
@@ -44,7 +44,7 @@ namespace BiliyardBallsGame
                 var ball = new BillyardBall(this, Color.Red);
                 ball.SetStartPositionInLeftHalf();
                 ball.OnHited += RedBall_OnHited;
-                _leftBalls.Add(ball);
+                _redBalls.Add(ball);
             }
 
             // Синие шарики в правой половине
@@ -53,11 +53,11 @@ namespace BiliyardBallsGame
                 var ball = new BillyardBall(this, Color.Blue);
                 ball.SetStartPositionInRightHalf();
                 ball.OnHited += BlueBall_OnHited;
-                _rightBalls.Add(ball);
+                _blueBalls.Add(ball);
             }
 
-            _allBalls.AddRange(_leftBalls);
-            _allBalls.AddRange(_rightBalls);
+            _allBalls.AddRange(_redBalls);
+            _allBalls.AddRange(_blueBalls);
         }
 
         private void BilliardForm_Load(object sender, EventArgs e)
@@ -140,10 +140,10 @@ namespace BiliyardBallsGame
 
         private bool CheckFullMixing()
         {
-            var redInRight = _leftBalls.Count(b => b.GetCenterX() > ClientSize.Width / 2);
-            var blueInLeft = _rightBalls.Count(b => b.GetCenterX() < ClientSize.Width / 2);
-            var redInLeft = _leftBalls.Count(b => b.GetCenterX() < ClientSize.Width / 2);
-            var blueInRight = _rightBalls.Count(b => b.GetCenterX() > ClientSize.Width / 2);
+            var redInRight = _redBalls.Count(b => b.GetCenterX() - b.GetRadius() > ClientSize.Width / 2);
+            var blueInLeft = _blueBalls.Count(b => b.GetCenterX() + b.GetRadius() < ClientSize.Width / 2);
+            var redInLeft = _redBalls.Count(b => b.GetCenterX() + b.GetRadius() < ClientSize.Width / 2);
+            var blueInRight = _blueBalls.Count(b => b.GetCenterX() - b.GetRadius() > ClientSize.Width / 2);
             return redInRight >= BallCount / 2 &&
                    redInLeft >= BallCount / 2 &&
                    blueInLeft >= BallCount / 2 &&

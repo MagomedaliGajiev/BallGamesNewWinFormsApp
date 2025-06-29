@@ -35,21 +35,25 @@ namespace BiliyardBallsGame
             // Обработка столкновений с границами
             if (_centerX <= LeftSide())
             {
+                _centerX = LeftSide();
                 _vX = -_vX;
                 OnHited.Invoke(this, new HitEventArgs(Side.Left));
             }
             if (_centerX >= RightSide())
             {
+                _centerX = RightSide();
                 _vX = -_vX;
                 OnHited.Invoke(this, new HitEventArgs(Side.Right));
             }
             if (_centerY <= TopSide())
             {
+                _centerY = TopSide();
                 _vY = -_vY;
                 OnHited.Invoke(this, new HitEventArgs(Side.Top));
             }
             if ( _centerY >= DownSide())
             {
+                _centerY = DownSide();
                 _vY = -_vY;
                 OnHited.Invoke(this, new HitEventArgs(Side.Bottom));
             }

@@ -8,14 +8,14 @@ namespace Balls.Common
         private Timer _timer;
 
         protected static Random _random = new ();
-        protected int _vX = 3;
-        protected int _vY = 3;
-        protected int _centerX;
-        protected int _centerY;
+        protected float _vX = 3;
+        protected float _vY = 3;
+        protected float _centerX;
+        protected float _centerY;
         protected int _radius;
         protected Color _color = Color.Aqua;
 
-        public Rectangle Bounds => new Rectangle(_centerX - _radius, _centerY - _radius, 2 * _radius, 2 * _radius);
+        public RectangleF Bounds => new RectangleF(_centerX - _radius, _centerY - _radius, 2 * _radius, 2 * _radius);
         public Ball(Form form)
         {
             _form = form;
@@ -36,9 +36,11 @@ namespace Balls.Common
             _color = color;
         }
 
-        public int GetCenterX() => _centerX;
-        public int GetCenterY() => _centerY;
+        public float GetCenterX() => _centerX;
+        public float GetCenterY() => _centerY;
         public Color GetColor() => _color;
+        public int GetRadius() => _radius;
+
 
         private void Timer_Tick(object? sender, EventArgs e)
         {

@@ -43,7 +43,7 @@
             redBallLeftLabel.AutoSize = true;
             redBallLeftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             redBallLeftLabel.ForeColor = Color.Red;
-            redBallLeftLabel.Location = new Point(12, 195);
+            redBallLeftLabel.Location = new Point(12, 177);
             redBallLeftLabel.Name = "redBallLeftLabel";
             redBallLeftLabel.Size = new Size(15, 17);
             redBallLeftLabel.TabIndex = 0;
@@ -54,7 +54,7 @@
             redBallRightLabel.AutoSize = true;
             redBallRightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             redBallRightLabel.ForeColor = Color.Red;
-            redBallRightLabel.Location = new Point(773, 195);
+            redBallRightLabel.Location = new Point(773, 177);
             redBallRightLabel.Name = "redBallRightLabel";
             redBallRightLabel.Size = new Size(15, 17);
             redBallRightLabel.TabIndex = 1;
@@ -88,7 +88,7 @@
             blueBallLeftLabel.AutoSize = true;
             blueBallLeftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             blueBallLeftLabel.ForeColor = Color.Blue;
-            blueBallLeftLabel.Location = new Point(12, 225);
+            blueBallLeftLabel.Location = new Point(12, 248);
             blueBallLeftLabel.Name = "blueBallLeftLabel";
             blueBallLeftLabel.Size = new Size(15, 17);
             blueBallLeftLabel.TabIndex = 4;
@@ -99,7 +99,7 @@
             blueBallTopLabel.AutoSize = true;
             blueBallTopLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             blueBallTopLabel.ForeColor = Color.Blue;
-            blueBallTopLabel.Location = new Point(386, 9);
+            blueBallTopLabel.Location = new Point(435, 9);
             blueBallTopLabel.Name = "blueBallTopLabel";
             blueBallTopLabel.Size = new Size(15, 17);
             blueBallTopLabel.TabIndex = 5;
@@ -110,7 +110,7 @@
             blueBallRightLabel.AutoSize = true;
             blueBallRightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             blueBallRightLabel.ForeColor = Color.Blue;
-            blueBallRightLabel.Location = new Point(773, 225);
+            blueBallRightLabel.Location = new Point(773, 248);
             blueBallRightLabel.Name = "blueBallRightLabel";
             blueBallRightLabel.Size = new Size(15, 17);
             blueBallRightLabel.TabIndex = 6;
@@ -121,7 +121,7 @@
             blueBallBottomLabel.AutoSize = true;
             blueBallBottomLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             blueBallBottomLabel.ForeColor = Color.Blue;
-            blueBallBottomLabel.Location = new Point(386, 424);
+            blueBallBottomLabel.Location = new Point(435, 424);
             blueBallBottomLabel.Name = "blueBallBottomLabel";
             blueBallBottomLabel.Size = new Size(15, 17);
             blueBallBottomLabel.TabIndex = 7;
