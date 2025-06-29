@@ -9,7 +9,6 @@ namespace BallCatcherGame
         private Timer _gameTimer;
         private int _caughtCount;
         private int _totalBalls = 10;
-        private Random _random = new Random();
         public MainForm()
         {
             InitializeComponent();
@@ -143,7 +142,7 @@ namespace BallCatcherGame
                     _balls.RemoveAt(i);
 
                     // Перерисовываем форму, чтобы убрать шарик
-                    this.Invalidate();
+                    Invalidate();
 
                     // Проверить завершение игры после поимки
                     CheckForGameOver();

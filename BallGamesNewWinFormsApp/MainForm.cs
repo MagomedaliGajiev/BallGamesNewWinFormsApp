@@ -5,7 +5,7 @@ namespace BallGamesNewWinFormsApp
 {
     public partial class MainForm : Form
     {
-        private List<MoveBall> _moveBalls = new List<MoveBall>();
+        private List<MoveBall> _balls = new List<MoveBall>();
         private PointBall _pointBall;
         private Timer _timer;
         private BufferedGraphicsContext _context;
@@ -36,6 +36,7 @@ namespace BallGamesNewWinFormsApp
         private void InitializeTimer()
         {
             _timer = new Timer();
+            _timer.Interval = 20;
             _timer.Tick += (s, e) =>
             {
                 UpdateBalls();
@@ -45,9 +46,9 @@ namespace BallGamesNewWinFormsApp
 
         private void UpdateBalls()
         {
-            if (_moveBalls != null)
+            if (_balls != null)
             {
-                foreach (var ball in _moveBalls)
+                foreach (var ball in _balls)
                 {
                     ball.Move();
                 }
@@ -56,21 +57,28 @@ namespace BallGamesNewWinFormsApp
 
         private void DrawAll()
         {
+            if (_buffer == null) return;
+
             _buffer.Graphics.Clear(BackColor);
 
-            if (_pointBall != null)
-            {
-                _pointBall.Draw(_buffer.Graphics);
-            }
+            _pointBall?.Draw(_buffer.Graphics);
 
-            if (_moveBalls != null)
+            if (_balls != null)
             {
-                foreach (var ball in _moveBalls)
+                foreach (var ball in _balls)
                 {
                     ball.Draw(_buffer.Graphics);
                 }
             }
-            _buffer.Render();
+
+            try
+            {
+                _buffer.Render();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при рендеринге: {ex.Message}");
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -91,9 +99,9 @@ namespace BallGamesNewWinFormsApp
             SetupDoubleBuffering();
 
             // Обновляем шарики при изменении размера
-            if (_moveBalls != null)
+            if (_balls != null)
             {
-                foreach (var ball in _moveBalls)
+                foreach (var ball in _balls)
                 {
                     // Корректируем положение шариков, если они вышли за границы
                     ball.EnsureOnForm(ClientSize);
@@ -119,35 +127,39 @@ namespace BallGamesNewWinFormsApp
             _timer.Stop();
 
             var caughtBallsCount = 0;
-            foreach (var ball in _moveBalls)
+            foreach (var ball in _balls)
             {
                 if (ball.IsOnForm())
                 {
                     caughtBallsCount++;
                 }
             }
-            MessageBox.Show($"Поймано шариков: {caughtBallsCount} из {_moveBalls.Count}");
+            MessageBox.Show($"Поймано шариков: {caughtBallsCount} из {_balls.Count}");
         }
 
         private void createBallsButton_Click(object sender, EventArgs e)
         {
             _timer.Stop();
 
-            if (_moveBalls != null)
+            if (_balls != null)
             {
-                // Просто очищаем список, без вызова Dispose()
-                _moveBalls.Clear();
+                _balls.Clear();
             }
             else
             {
-                _moveBalls = new List<MoveBall>();
+                _balls = new List<MoveBall>();
             }
 
             for (int i = 0; i < 15; i++)
             {
-                _moveBalls.Add(new MoveBall(this));
+                // Учитываем высоту кнопок при создании шариков
+                var ball = new MoveBall(this);
+                
+                _balls.Add(ball);
             }
 
+            // Принудительная перерисовка после создания
+            DrawAll();
             _timer.Start();
         }
 

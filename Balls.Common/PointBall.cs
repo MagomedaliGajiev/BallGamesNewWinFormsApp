@@ -4,9 +4,9 @@
     {
         public PointBall(Form form, int x, int y) : base(form)
         {
-            _x = x - _size / 2;
-            _y = y - _size / 2;
-            _size = 50;
+            _centerX = x - _radius / 2;
+            _centerY = y - _radius / 2;
+            _radius = 50;
         }
     }
 }

@@ -1,18 +1,22 @@
-﻿namespace Balls.Common
+﻿using BallGamesNewWinFormsApp;
+
+namespace Balls.Common
 {
-    public class MoveBall : RandomSizeAndPointBall
+    public class MoveBall : RandomPointBall
     {
         public MoveBall(Form form) : base(form)
         {
-            _vX = _random.Next(-20, 21);
-            _vY = _random.Next(-20, 21);
+            _vX = GenerateRandomProjection();
+            _vY = GenerateRandomProjection();
+        }
 
-            // Гарантируем, что шарик движется
-            while (_vX == 0 && _vY == 0)
-            {
-                _vX = _random.Next(-20, 21);
-                _vY = _random.Next(-20, 21);
-            }
+        private int GenerateRandomProjection()
+        {
+            var randomDouble = _random.NextDouble();
+            var sign = 1;
+            if (randomDouble < 0.5)
+                sign = -1;
+            return _random.Next(2, 5) * sign;
         }
     }
 }

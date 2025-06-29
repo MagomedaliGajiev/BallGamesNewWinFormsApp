@@ -1,21 +1,58 @@
-﻿using System.Windows.Forms;
+﻿using Timer = System.Windows.Forms.Timer;
 
 namespace Balls.Common
 {
     public class Ball
     {
         protected Form _form;
+        private Timer _timer;
+
+        protected static Random _random = new ();
         protected int _vX = 3;
         protected int _vY = 3;
-        protected int _x;
-        protected int _y;
-        protected int _size;
+        protected int _centerX;
+        protected int _centerY;
+        protected int _radius;
         protected Color _color = Color.Aqua;
 
-        public Rectangle Bounds => new Rectangle(_x, _y, _size, _size);
+        public Rectangle Bounds => new Rectangle(_centerX - _radius, _centerY - _radius, 2 * _radius, 2 * _radius);
         public Ball(Form form)
         {
             _form = form;
+            _timer = new Timer();
+            _timer.Interval = 20;
+            _timer.Tick += Timer_Tick;
+
+            GenerateRandomColor();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            Move();
+        }
+
+        private bool IsMoveable()
+        {
+            return _timer.Enabled;
+        }
+
+        public void Start()
+        {
+            _timer.Start();
+        }
+        public void Stop()
+        {
+            _timer.Stop();
+        }
+
+        private void GenerateRandomColor()
+        {
+            // Случайный цвет
+            _color = Color.FromArgb(
+                _random.Next(150, 256),
+                _random.Next(150, 256),
+                _random.Next(150, 256)
+            );
         }
 
         public virtual void Draw(Graphics graphics)
@@ -28,16 +65,16 @@ namespace Balls.Common
 
         public virtual void Move()
         {
-            _x += _vX;
-            _y += _vY;
+            _centerX += _vX;
+            _centerY += _vY;
 
             //// Обработка столкновений с границами
-            //if (_x <= 0 || _x + _size >= _form.ClientSize.Width)
+            //if (_centerX - _radius <= 0 || _centerX + _radius >= _form.ClientSize.Width)
             //{
             //    _vX = -_vX;
             //}
 
-            //if (_x <= 0 || _x + _size >= _form.ClientSize.Height)
+            //if (_centerY - _radius <= 0 || _centerY + _radius >= _form.ClientSize.Height)
             //{
             //    _vY = -_vY;
             //}
@@ -45,45 +82,60 @@ namespace Balls.Common
 
         public virtual void EnsureOnForm(Size clientSize)
         {
-            _x = Math.Max(0, Math.Min(_x, clientSize.Width - _size));
-            _y = Math.Max(0, Math.Min(_y, clientSize.Height - _size));
+            _centerX = Math.Max(_radius, Math.Min(_centerX, clientSize.Width - _radius));
+            _centerY = Math.Max(_radius, Math.Min(_centerY, clientSize.Height - _radius));
         }
 
         public void Show()
         {
             var graphics = _form.CreateGraphics();
             var brush = Brushes.Aqua;
-            var rectangle = new Rectangle(_x, _y, _size, _size);
+            var rectangle = new Rectangle(_centerX, _centerY, _radius, _radius);
             graphics.FillEllipse(brush, rectangle);
         }
 
+        public int LeftSide()
+        {
+            return _radius;
+        }
+
+        public int RightSide()
+        {
+            return _form.ClientSize.Width - _radius;
+        }
+
+        public int TopSide()
+        {
+            return _radius;
+        }
+
+        public int DownSide()
+        {
+            return _form.ClientSize.Height - _radius;
+        } 
+
         public virtual bool IsOnForm()
         {
-            return _x > 0 &&
-                   _y > 0 &&
-                   _x + _size < _form.ClientSize.Width &&
-                   _y + _size < _form.ClientSize.Height;
+            return _centerX >= LeftSide() &&
+                   _centerX <= RightSide() &&
+                   _centerY >= TopSide() &&
+                   _centerY <= DownSide();
         }
 
         // Проверяет, улетел ли шарик за пределы формы
         public virtual bool IsOutOfForm()
         {
-            return _x + _size < 0 ||
-                   _y + _size < 0 ||
-                   _x > _form.ClientSize.Width ||
-                   _y > _form.ClientSize.Height;
+            return _centerX + _radius < 0 ||
+                   _centerY + _radius < 0 ||
+                   _centerX - _radius > _form.ClientSize.Width ||
+                   _centerY - _radius > _form.ClientSize.Height;
         }
 
         public virtual bool Contains(Point point)
         {
-            // Проверка попадания точки в шарик
-            var radius = _size / 2;
-            var centerX = _x + radius;
-            var centerY = _y + radius;
-
-            return (point.X - centerX) * (point.X - centerX) +
-                   (point.Y - centerY) * (point.Y - centerY) <=
-                   radius * radius;
+            return (point.X - _centerX) * (point.X - _centerX) +
+                   (point.Y - _centerY) * (point.Y - _centerY) <=
+                   _radius * _radius;
         }
     }
 }
