@@ -7,12 +7,12 @@ namespace BiliyardBallsGame
         public event EventHandler<HitEventArgs> OnHited;
         public BillyardBall(Form form) : base(form)
         {
-            _radius = 25;
+            _radius = 15;
         }
 
         public BillyardBall(Form form, Color color) : base(form, color)
         {
-            _radius = 25;
+            _radius = 15;
         }
 
         public void SetStartPositionInLeftHalf()
