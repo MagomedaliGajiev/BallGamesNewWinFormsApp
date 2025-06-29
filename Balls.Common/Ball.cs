@@ -67,17 +67,6 @@ namespace Balls.Common
         {
             _centerX += _vX;
             _centerY += _vY;
-
-            //// Обработка столкновений с границами
-            //if (_centerX - _radius <= 0 || _centerX + _radius >= _form.ClientSize.Width)
-            //{
-            //    _vX = -_vX;
-            //}
-
-            //if (_centerY - _radius <= 0 || _centerY + _radius >= _form.ClientSize.Height)
-            //{
-            //    _vY = -_vY;
-            //}
         }
 
         public virtual void EnsureOnForm(Size clientSize)
@@ -86,12 +75,9 @@ namespace Balls.Common
             _centerY = Math.Max(_radius, Math.Min(_centerY, clientSize.Height - _radius));
         }
 
-        public void Show()
+        protected void Show()
         {
-            var graphics = _form.CreateGraphics();
-            var brush = Brushes.Aqua;
-            var rectangle = new Rectangle(_centerX, _centerY, _radius, _radius);
-            graphics.FillEllipse(brush, rectangle);
+            Paint(new SolidBrush(_color));
         }
 
         public int LeftSide()
@@ -136,6 +122,24 @@ namespace Balls.Common
             return (point.X - _centerX) * (point.X - _centerX) +
                    (point.Y - _centerY) * (point.Y - _centerY) <=
                    _radius * _radius;
+        }
+
+        protected void Clear()
+        {
+            var brush = new SolidBrush(_form.BackColor);
+            Paint(brush);
+        }
+
+        protected void Paint(Brush color)
+        {
+            var graphics = _form.CreateGraphics();
+            graphics.FillEllipse(color, Bounds);
+        }
+
+        protected virtual void Go()
+        {
+            _centerX += _vX;
+            _centerY += _vY;
         }
     }
 }

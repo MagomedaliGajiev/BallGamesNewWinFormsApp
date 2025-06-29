@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balls.Common", "Balls.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallCatcherGame", "BallCatcherGame\BallCatcherGame.csproj", "{FFD6215D-B522-41DA-8015-0F191406F284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiliyardBallsGame", "BiliyardBallsGame\BiliyardBallsGame.csproj", "{25CEF01A-C93E-42C9-AE28-1E8A6DCC7A3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillyardBallsGame", "BiliyardBallsGame\BillyardBallsGame.csproj", "{25CEF01A-C93E-42C9-AE28-1E8A6DCC7A3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
