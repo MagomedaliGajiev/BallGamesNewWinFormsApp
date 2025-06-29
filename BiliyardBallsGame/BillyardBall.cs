@@ -7,14 +7,30 @@ namespace BiliyardBallsGame
         public event EventHandler<HitEventArgs> OnHited;
         public BillyardBall(Form form) : base(form)
         {
+            _radius = 25;
+        }
+
+        public BillyardBall(Form form, Color color) : base(form, color)
+        {
+            _radius = 25;
+        }
+
+        public void SetStartPositionInLeftHalf()
+        {
+            _centerX = _random.Next(LeftSide(), _form.ClientSize.Width / 2);
+            _centerY = _random.Next(TopSide(), DownSide());
+        }
+
+        public void SetStartPositionInRightHalf()
+        {
+            _centerX = _random.Next(_form.ClientSize.Width / 2, RightSide());
+            _centerY = _random.Next(TopSide(), DownSide());
         }
 
         public override void Move()
         {
 
-            Clear();
-            Go();
-            Show();
+            base.Move();
 
             // Обработка столкновений с границами
             if (_centerX <= LeftSide())

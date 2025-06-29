@@ -9,5 +9,11 @@ namespace BallGamesNewWinFormsApp
             _centerX = _random.Next(LeftSide() + 50, RightSide() - 50);
             _centerY = _random.Next(TopSide() +50, DownSide() - 50);
         }
+
+        public RandomPointBall(Form form, Color color) : base(form, color)
+        {
+            _centerX = _random.Next(LeftSide() + 50, RightSide() - 50);
+            _centerY = _random.Next(TopSide() + 50, DownSide() - 50);
+        }
     }
 }

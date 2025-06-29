@@ -10,6 +10,12 @@ namespace Balls.Common
             _vY = GenerateRandomProjection();
         }
 
+        public MoveBall(Form form, Color color) : base(form, color)
+        {
+            _vX = GenerateRandomProjection();
+            _vY = GenerateRandomProjection();
+        }
+
         private int GenerateRandomProjection()
         {
             var randomDouble = _random.NextDouble();

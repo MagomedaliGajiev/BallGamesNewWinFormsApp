@@ -26,6 +26,20 @@ namespace Balls.Common
             GenerateRandomColor();
         }
 
+        public Ball(Form form, Color color)
+        {
+            _form = form;
+            _timer = new Timer();
+            _timer.Interval = 20;
+            _timer.Tick += Timer_Tick;
+
+            _color = color;
+        }
+
+        public int GetCenterX() => _centerX;
+        public int GetCenterY() => _centerY;
+        public Color GetColor() => _color;
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
             Move();

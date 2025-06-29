@@ -8,5 +8,10 @@ namespace Balls.Common
         {
             _radius = _random.Next(15, 40);
         }
+
+        public RandomSizeAndPointBall(Form form, Color color) : base(form, color)
+        {
+            _radius = _random.Next(15, 40);
+        }
     }
 }
