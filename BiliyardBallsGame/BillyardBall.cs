@@ -11,6 +11,7 @@ namespace BiliyardBallsGame
 
         public override void Move()
         {
+
             Clear();
             Go();
             Show();
