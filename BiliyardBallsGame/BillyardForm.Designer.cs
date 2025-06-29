@@ -28,62 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
-            leftLabel = new Label();
-            rightLabel = new Label();
-            bottomLabel = new Label();
-            topLabel = new Label();
+            redBallLeftLabel = new Label();
+            redBallRightLabel = new Label();
+            redBallBottomLabel = new Label();
+            redBallTopLabel = new Label();
+            blueBallLeftLabel = new Label();
+            blueBallTopLabel = new Label();
+            blueBallRightLabel = new Label();
+            blueBallBottomLabel = new Label();
             SuspendLayout();
             // 
-            // leftLabel
+            // redBallLeftLabel
             // 
-            leftLabel.AutoSize = true;
-            leftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            leftLabel.Location = new Point(12, 207);
-            leftLabel.Name = "leftLabel";
-            leftLabel.Size = new Size(15, 17);
-            leftLabel.TabIndex = 0;
-            leftLabel.Text = "0";
+            redBallLeftLabel.AutoSize = true;
+            redBallLeftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            redBallLeftLabel.ForeColor = Color.Red;
+            redBallLeftLabel.Location = new Point(12, 195);
+            redBallLeftLabel.Name = "redBallLeftLabel";
+            redBallLeftLabel.Size = new Size(15, 17);
+            redBallLeftLabel.TabIndex = 0;
+            redBallLeftLabel.Text = "0";
             // 
-            // rightLabel
+            // redBallRightLabel
             // 
-            rightLabel.AutoSize = true;
-            rightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            rightLabel.Location = new Point(773, 207);
-            rightLabel.Name = "rightLabel";
-            rightLabel.Size = new Size(15, 17);
-            rightLabel.TabIndex = 1;
-            rightLabel.Text = "0";
+            redBallRightLabel.AutoSize = true;
+            redBallRightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            redBallRightLabel.ForeColor = Color.Red;
+            redBallRightLabel.Location = new Point(773, 195);
+            redBallRightLabel.Name = "redBallRightLabel";
+            redBallRightLabel.Size = new Size(15, 17);
+            redBallRightLabel.TabIndex = 1;
+            redBallRightLabel.Text = "0";
             // 
-            // bottomLabel
+            // redBallBottomLabel
             // 
-            bottomLabel.AutoSize = true;
-            bottomLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            bottomLabel.Location = new Point(386, 424);
-            bottomLabel.Name = "bottomLabel";
-            bottomLabel.Size = new Size(15, 17);
-            bottomLabel.TabIndex = 2;
-            bottomLabel.Text = "0";
+            redBallBottomLabel.AutoSize = true;
+            redBallBottomLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            redBallBottomLabel.ForeColor = Color.Red;
+            redBallBottomLabel.Location = new Point(365, 424);
+            redBallBottomLabel.Name = "redBallBottomLabel";
+            redBallBottomLabel.Size = new Size(15, 17);
+            redBallBottomLabel.TabIndex = 2;
+            redBallBottomLabel.Text = "0";
             // 
-            // topLabel
+            // redBallTopLabel
             // 
-            topLabel.AutoSize = true;
-            topLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            topLabel.Location = new Point(386, 9);
-            topLabel.Name = "topLabel";
-            topLabel.Size = new Size(15, 17);
-            topLabel.TabIndex = 3;
-            topLabel.Text = "0";
+            redBallTopLabel.AutoSize = true;
+            redBallTopLabel.BackColor = SystemColors.Control;
+            redBallTopLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            redBallTopLabel.ForeColor = Color.Red;
+            redBallTopLabel.Location = new Point(365, 9);
+            redBallTopLabel.Name = "redBallTopLabel";
+            redBallTopLabel.Size = new Size(15, 17);
+            redBallTopLabel.TabIndex = 3;
+            redBallTopLabel.Text = "0";
             // 
-            // Form1
+            // blueBallLeftLabel
+            // 
+            blueBallLeftLabel.AutoSize = true;
+            blueBallLeftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            blueBallLeftLabel.ForeColor = Color.Blue;
+            blueBallLeftLabel.Location = new Point(12, 225);
+            blueBallLeftLabel.Name = "blueBallLeftLabel";
+            blueBallLeftLabel.Size = new Size(15, 17);
+            blueBallLeftLabel.TabIndex = 4;
+            blueBallLeftLabel.Text = "0";
+            // 
+            // blueBallTopLabel
+            // 
+            blueBallTopLabel.AutoSize = true;
+            blueBallTopLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            blueBallTopLabel.ForeColor = Color.Blue;
+            blueBallTopLabel.Location = new Point(386, 9);
+            blueBallTopLabel.Name = "blueBallTopLabel";
+            blueBallTopLabel.Size = new Size(15, 17);
+            blueBallTopLabel.TabIndex = 5;
+            blueBallTopLabel.Text = "0";
+            // 
+            // blueBallRightLabel
+            // 
+            blueBallRightLabel.AutoSize = true;
+            blueBallRightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            blueBallRightLabel.ForeColor = Color.Blue;
+            blueBallRightLabel.Location = new Point(773, 225);
+            blueBallRightLabel.Name = "blueBallRightLabel";
+            blueBallRightLabel.Size = new Size(15, 17);
+            blueBallRightLabel.TabIndex = 6;
+            blueBallRightLabel.Text = "0";
+            // 
+            // blueBallBottomLabel
+            // 
+            blueBallBottomLabel.AutoSize = true;
+            blueBallBottomLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            blueBallBottomLabel.ForeColor = Color.Blue;
+            blueBallBottomLabel.Location = new Point(386, 424);
+            blueBallBottomLabel.Name = "blueBallBottomLabel";
+            blueBallBottomLabel.Size = new Size(15, 17);
+            blueBallBottomLabel.TabIndex = 7;
+            blueBallBottomLabel.Text = "0";
+            // 
+            // BillyardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(topLabel);
-            Controls.Add(bottomLabel);
-            Controls.Add(rightLabel);
-            Controls.Add(leftLabel);
-            Name = "Form1";
+            Controls.Add(blueBallBottomLabel);
+            Controls.Add(blueBallRightLabel);
+            Controls.Add(blueBallTopLabel);
+            Controls.Add(blueBallLeftLabel);
+            Controls.Add(redBallTopLabel);
+            Controls.Add(redBallBottomLabel);
+            Controls.Add(redBallRightLabel);
+            Controls.Add(redBallLeftLabel);
+            Name = "BillyardForm";
             Text = "BillyardGame";
             Load += BilliardForm_Load;
             ResumeLayout(false);
@@ -92,9 +149,13 @@
 
         #endregion
 
-        private Label leftLabel;
-        private Label rightLabel;
-        private Label bottomLabel;
-        private Label topLabel;
+        private Label redBallLeftLabel;
+        private Label redBallRightLabel;
+        private Label redBallBottomLabel;
+        private Label redBallTopLabel;
+        private Label blueBallLeftLabel;
+        private Label blueBallTopLabel;
+        private Label blueBallRightLabel;
+        private Label blueBallBottomLabel;
     }
 }

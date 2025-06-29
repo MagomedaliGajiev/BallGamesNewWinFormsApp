@@ -43,7 +43,7 @@ namespace BiliyardBallsGame
             {
                 var ball = new BillyardBall(this, Color.Red);
                 ball.SetStartPositionInLeftHalf();
-                ball.OnHited += Ball_OnHited;
+                ball.OnHited += RedBall_OnHited;
                 _leftBalls.Add(ball);
             }
 
@@ -52,7 +52,7 @@ namespace BiliyardBallsGame
             {
                 var ball = new BillyardBall(this, Color.Blue);
                 ball.SetStartPositionInRightHalf();
-                ball.OnHited += Ball_OnHited;
+                ball.OnHited += BlueBall_OnHited;
                 _rightBalls.Add(ball);
             }
 
@@ -65,21 +65,40 @@ namespace BiliyardBallsGame
             InitializeGame();
         }
 
-        private void Ball_OnHited(object? sender, HitEventArgs e)
+        private void RedBall_OnHited(object? sender, HitEventArgs e)
         {
             switch (e.Side)
             {
                 case Side.Left:
-                    leftLabel.Text = (Convert.ToInt32(leftLabel.Text) + 1).ToString();
+                    redBallLeftLabel.Text = (Convert.ToInt32(redBallLeftLabel.Text) + 1).ToString();
                     break;
                 case Side.Right:
-                    rightLabel.Text = (Convert.ToInt32(rightLabel.Text) + 1).ToString();
+                    redBallRightLabel.Text = (Convert.ToInt32(redBallRightLabel.Text) + 1).ToString();
                     break;
                 case Side.Top:
-                    topLabel.Text = (Convert.ToInt32(topLabel.Text) + 1).ToString();
+                    redBallTopLabel.Text = (Convert.ToInt32(redBallTopLabel.Text) + 1).ToString();
                     break;
                 case Side.Bottom:
-                    bottomLabel.Text = (Convert.ToInt32(bottomLabel.Text) + 1).ToString();
+                    redBallBottomLabel.Text = (Convert.ToInt32(redBallBottomLabel.Text) + 1).ToString();
+                    break;
+            }
+        }
+
+        private void BlueBall_OnHited(object? sender, HitEventArgs e)
+        {
+            switch (e.Side)
+            {
+                case Side.Left:
+                    blueBallLeftLabel.Text = (Convert.ToInt32(blueBallLeftLabel.Text) + 1).ToString();
+                    break;
+                case Side.Right:
+                    blueBallRightLabel.Text = (Convert.ToInt32(blueBallRightLabel.Text) + 1).ToString();
+                    break;
+                case Side.Top:
+                    blueBallTopLabel.Text = (Convert.ToInt32(blueBallTopLabel.Text) + 1).ToString();
+                    break;
+                case Side.Bottom:
+                    blueBallBottomLabel.Text = (Convert.ToInt32(blueBallBottomLabel.Text) + 1).ToString();
                     break;
             }
         }
