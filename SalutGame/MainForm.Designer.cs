@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            launchRocketButton = new Button();
             SuspendLayout();
+            // 
+            // launchRocketButton
+            // 
+            launchRocketButton.Location = new Point(12, 12);
+            launchRocketButton.Name = "launchRocketButton";
+            launchRocketButton.Size = new Size(114, 25);
+            launchRocketButton.TabIndex = 0;
+            launchRocketButton.Text = "Запустить рокету";
+            launchRocketButton.UseVisualStyleBackColor = true;
+            launchRocketButton.Click += launchRocketButton_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(launchRocketButton);
             Name = "MainForm";
             Text = "Salut";
             Load += MainForm_Load;
@@ -43,5 +55,7 @@
         }
 
         #endregion
+
+        private Button launchRocketButton;
     }
 }

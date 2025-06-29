@@ -7,7 +7,7 @@ namespace SalutGame
         private float _g = 0.2f;
         public SalutBall(Form form, Point point) : base(form)
         {
-            _radius = 15;
+            _radius = 7;
             _centerX = point.X;
             _centerY = point.Y;
             _vY = -Math.Abs(_vY);

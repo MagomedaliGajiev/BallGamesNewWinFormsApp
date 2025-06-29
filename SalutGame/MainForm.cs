@@ -8,6 +8,7 @@ namespace SalutGame
     {
         private List<Ball> _balls = new List<Ball>();
         private Timer _timer = new();
+        private List<RocketBall> _explodingRockets = new List<RocketBall>();
         public MainForm()
         {
             InitializeComponent();
@@ -21,14 +22,12 @@ namespace SalutGame
                           ControlStyles.UserPaint, true);
             DoubleBuffered = true;
 
-            
+
 
             foreach (var ball in _balls)
             {
                 ball.Draw(e.Graphics);
             }
-            _timer.Start();
-
         }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
@@ -44,16 +43,6 @@ namespace SalutGame
 
         }
 
-        private void _timer_Tick(object? sender, EventArgs e)
-        {
-            foreach (var ball in _balls)
-            {
-                ball.Move();
-            }
-
-            Invalidate();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             Paint += MainForm_Paint;
@@ -61,8 +50,64 @@ namespace SalutGame
             // Настройка таймера
             _timer.Interval = 20;
             _timer.Tick += _timer_Tick;
-
             _timer.Start();
+
+        }
+
+        private void LaunchRocket()
+        {
+            var rockket = new RocketBall(this);
+            rockket.Exploded += Rockket_Exploded;
+            _balls.Add(rockket);
+        }
+
+        private void Rockket_Exploded(object? sender, EventArgs e)
+        {
+            if (sender is RocketBall rocket)
+            {
+                _explodingRockets.Add(rocket);
+            }
+        }
+
+        private void _timer_Tick(object? sender, EventArgs e)
+        {
+            // Обработка взрывов
+            foreach (var rocket in _explodingRockets)
+            {
+                _balls.Remove(rocket);
+                CreateSalut(rocket.GetCenterX(), rocket.GetCenterY());
+            }
+            _explodingRockets.Clear();
+
+            // Движение шаров
+            foreach (var ball in _balls.ToList())
+            {
+                ball.Move();
+
+                // Удаление упавших шаров
+                if (ball.IsOutOfForm())
+                {
+                    _balls.Remove(ball);
+                }
+            }
+            Invalidate();
+        }
+
+        private void CreateSalut(float centerX, float centerY)
+        {
+            var random = new Random();
+            int count = random.Next(5, 15);
+
+            for (int i = 0; i < count; i++)
+            {
+                var salutBall = new SalutBall(this, new Point((int)centerX, (int)centerY));
+                _balls.Add(salutBall);
+            }
+        }
+
+        private void launchRocketButton_Click(object sender, EventArgs e)
+        {
+            LaunchRocket();
         }
     }
 }

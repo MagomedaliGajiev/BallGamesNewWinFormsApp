@@ -1,6 +1,4 @@
-﻿using BallGamesNewWinFormsApp;
-
-namespace Balls.Common
+﻿namespace Balls.Common
 {
     public class MoveBall : RandomSizeAndPointBall
     {
