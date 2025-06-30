@@ -61,7 +61,7 @@ namespace Balls.Common
             _timer.Stop();
         }
 
-        private void GenerateRandomColor()
+        protected virtual void GenerateRandomColor()
         {
             // Случайный цвет
             _color = Color.FromArgb(
