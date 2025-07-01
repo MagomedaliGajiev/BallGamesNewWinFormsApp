@@ -1,6 +1,4 @@
 ﻿using Balls.Common;
-using System;
-using System.Drawing;
 
 namespace FruitNinjaWinFormsApp
 {
