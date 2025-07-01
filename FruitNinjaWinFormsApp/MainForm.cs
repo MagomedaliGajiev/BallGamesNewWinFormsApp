@@ -1,4 +1,5 @@
 using static System.Formats.Asn1.AsnWriter;
+using static System.Reflection.Metadata.BlobBuilder;
 using Timer = System.Windows.Forms.Timer;
 
 namespace FruitNinjaWinFormsApp
@@ -6,10 +7,15 @@ namespace FruitNinjaWinFormsApp
     public partial class MainForm : Form
     {
         private List<FruitBall> _fruits = new List<FruitBall>();
+        private List<BombBall> _bombs = new List<BombBall>();
         private Timer _spawnTimer = new Timer();
         private Timer _updateTimer = new Timer();
         private int _score = 0;
         private Label _scoreLabel;
+        private bool _gameOver = false;
+        private Point? _explosionPoint = null;
+        private Timer _explosionTimer = new Timer();
+        private int _explosionCounter = 0;
 
         public MainForm()
         {
@@ -19,7 +25,9 @@ namespace FruitNinjaWinFormsApp
 
         private void InitializeGame()
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                     ControlStyles.AllPaintingInWmPaint |
+                     ControlStyles.UserPaint, true);
             DoubleBuffered = true;
 
             // Настройка таймеров
@@ -28,6 +36,9 @@ namespace FruitNinjaWinFormsApp
 
             _updateTimer.Interval = 20;
             _updateTimer.Tick += UpdateTimer_Tick;
+
+            _explosionTimer.Interval = 100;
+            _explosionTimer.Tick += ExplosionTimer_Tick;
 
             // Создание счетчика очков
             _scoreLabel = new Label
@@ -45,12 +56,27 @@ namespace FruitNinjaWinFormsApp
             _updateTimer.Start();
         }
 
-        private void SpawnTimer_Tick(object? sender, EventArgs e)
+        private void SpawnTimer_Tick(object sender, EventArgs e)
         {
-            _fruits.Add(new FruitBall(this));
+            if (_gameOver) return;
+
+            var random = new Random();
+
+            // С вероятностью 20% создаем бомбу вместо фрукта
+            if (random.Next(0, 100) < 20)
+            {
+                _bombs.Add(new BombBall(this));
+            }
+            else
+            {
+                _fruits.Add(new FruitBall(this));
+            }
         }
-        private void UpdateTimer_Tick(object? sender, EventArgs e)
+        private void UpdateTimer_Tick(object sender, EventArgs e)
         {
+            if (_gameOver) return;
+
+            // Обновление фруктов
             for (int i = _fruits.Count - 1; i >= 0; i--)
             {
                 var fruit = _fruits[i];
@@ -61,20 +87,81 @@ namespace FruitNinjaWinFormsApp
                     _fruits.RemoveAt(i);
                 }
             }
+
+            // Обновление бомб и проверка столкновений
+            for (int i = _bombs.Count - 1; i >= 0; i--)
+            {
+                var bomb = _bombs[i];
+                bomb.Move();
+
+                // Проверка столкновения с мышью
+                if (bomb.Contains(lastMousePosition))
+                {
+                    _explosionPoint = new Point((int)bomb.GetCenterX(), (int)bomb.GetCenterY());
+                    _bombs.RemoveAt(i);
+                    GameOver();
+                    _explosionTimer.Start();
+                    return;
+                }
+
+                if (bomb.IsOutOfForm())
+                {
+                    _bombs.RemoveAt(i);
+                }
+            }
+
+            Invalidate();
+        }
+
+        private void ExplosionTimer_Tick(object? sender, EventArgs e)
+        {
+            _explosionCounter++;
+            if (_explosionCounter > 5) // Показываем взрыв 0.5 секунды
+            {
+                _explosionTimer.Stop();
+                _explosionPoint = null;
+                _explosionCounter = 0;
+            }
             Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+
+            // Рисуем фрукты
             foreach (var fruit in _fruits)
             {
                 fruit.Draw(e.Graphics);
             }
+
+            // Рисуем бомбы
+            foreach (var bomb in _bombs)
+            {
+                bomb.Draw(e.Graphics);
+            }
+
+            // Рисуем взрыв, если он есть
+            if (_explosionPoint.HasValue)
+            {
+                using (var brush = new SolidBrush(Color.Red))
+                {
+                    var size = 20 + _explosionCounter * 5;
+                    e.Graphics.FillEllipse(brush,
+                        _explosionPoint.Value.X - size / 2,
+                        _explosionPoint.Value.Y - size / 2,
+                        size, size);
+                }
+            }
         }
 
+        private Point lastMousePosition;
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
+            if (_gameOver) return;
+
+            lastMousePosition = e.Location;
+
             for (int i = _fruits.Count - 1; i >= 0; i--)
             {
                 if (_fruits[i].Contains(e.Location))
@@ -84,6 +171,16 @@ namespace FruitNinjaWinFormsApp
                     _scoreLabel.Text = $"Очки: {_score}";
                 }
             }
+        }
+
+        private void GameOver()
+        {
+            _gameOver = true;
+            _spawnTimer.Stop();
+            _updateTimer.Stop();
+
+            MessageBox.Show($"Игра окончена! Ваш счет: {_score}", "Fruit Ninja",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
