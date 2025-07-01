@@ -11,7 +11,7 @@ namespace FruitNinjaWinFormsApp
             _radius = _random.Next(20, 30);
             _centerX = _random.Next(LeftSide(), RightSide());
             _centerY = form.ClientSize.Height + _radius;
-            _vY = -_random.Next(5, 10);
+            _vY = -_random.Next(10, 20);
             _vX = _random.Next(-3, 4);
             _color = Color.Black;
 
