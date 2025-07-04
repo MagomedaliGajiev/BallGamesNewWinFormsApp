@@ -1,4 +1,3 @@
-using static System.Formats.Asn1.AsnWriter;
 using static System.Reflection.Metadata.BlobBuilder;
 using Timer = System.Windows.Forms.Timer;
 
@@ -10,12 +9,16 @@ namespace FruitNinjaWinFormsApp
         private List<BombBall> _bombs = new List<BombBall>();
         private Timer _spawnTimer = new Timer();
         private Timer _updateTimer = new Timer();
+        private Timer _slowowDownTimer = new Timer();
         private int _score = 0;
         private Label _scoreLabel;
+        private Label _slowDownLabel;
         private bool _gameOver = false;
         private Point? _explosionPoint = null;
         private Timer _explosionTimer = new Timer();
         private int _explosionCounter = 0;
+        private bool _isSlowed = false;
+        private int _slowDownCounter = 0;
 
         public MainForm()
         {
@@ -40,6 +43,9 @@ namespace FruitNinjaWinFormsApp
             _explosionTimer.Interval = 100;
             _explosionTimer.Tick += ExplosionTimer_Tick;
 
+            _slowowDownTimer.Interval = 1000;
+            _slowowDownTimer.Tick += SlowowDownTimer_Tick;
+
             // Создание счетчика очков
             _scoreLabel = new Label
             {
@@ -51,6 +57,18 @@ namespace FruitNinjaWinFormsApp
             };
             Controls.Add(_scoreLabel);
 
+            // Создание индикатора замедления
+            _slowDownLabel = new Label
+            {
+                Location = new Point(10, 70),
+                AutoSize = true,
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.Blue,
+                Text = "",
+                Visible = false
+            };
+            Controls.Add(_slowDownLabel);
+
             // Запуск игры
             _spawnTimer.Start();
             _updateTimer.Start();
@@ -61,9 +79,14 @@ namespace FruitNinjaWinFormsApp
             if (_gameOver) return;
 
             var random = new Random();
+            var type = random.Next(0, 100);
 
-            // С вероятностью 20% создаем бомбу вместо фрукта
-            if (random.Next(0, 100) < 20)
+            // 5% - банан, 15% - бомба, 80% - обычные фрукты
+            if (type < 5)
+            {
+                _fruits.Add(new BananaBall(this));
+            }
+            else if (type < 20)
             {
                 _bombs.Add(new BombBall(this));
             }
@@ -125,6 +148,45 @@ namespace FruitNinjaWinFormsApp
             Invalidate();
         }
 
+        private void SlowowDownTimer_Tick(object? sender, EventArgs e)
+        {
+            _slowDownCounter--;
+
+            _slowDownLabel.Text = $"Замедление: {_slowDownCounter} сек";
+
+            if (_slowDownCounter <= 0)
+            {
+                EndSlowDownEffect();
+            }
+        }
+
+        private void StartSlowDownEffect()
+        {
+            _isSlowed = true;
+            _slowDownCounter = 5; // 5 секунд замедления
+            _slowDownLabel.Text = $"Замедление: {_slowDownCounter} сек";
+            _slowDownLabel.Visible = true;
+            _slowowDownTimer.Start();
+
+            // Замедляем все существующие фрукты
+            foreach (var fruit in _fruits)
+            {
+                fruit.SlowDown(0.5f);
+            }
+        }
+
+        private void EndSlowDownEffect()
+        {
+            _isSlowed = false;
+            _slowowDownTimer.Stop();
+            _slowDownLabel.Visible = false;
+
+            foreach (var fruit in _fruits)
+            {
+                fruit.RestoreSpeed();
+            }
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -166,6 +228,12 @@ namespace FruitNinjaWinFormsApp
             {
                 if (_fruits[i].Contains(e.Location))
                 {
+                    // Замедляем все существующие фрукты
+                    if (_fruits[i] is BananaBall && !_isSlowed)
+                    {
+                        StartSlowDownEffect();
+                    }
+
                     _fruits[i].Slice();
                     _score += 10;
                     _scoreLabel.Text = $"Очки: {_score}";
@@ -178,9 +246,12 @@ namespace FruitNinjaWinFormsApp
             _gameOver = true;
             _spawnTimer.Stop();
             _updateTimer.Stop();
+            _slowowDownTimer.Stop();
 
             MessageBox.Show($"Игра окончена! Ваш счет: {_score}", "Fruit Ninja",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Application.Restart();
         }
     }
 }
