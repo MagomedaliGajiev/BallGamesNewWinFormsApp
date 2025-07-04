@@ -32,10 +32,10 @@
             // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new Size(800, 600);
             this.Name = "MainForm";
             this.Text = "Fruit Ninja";
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
+            this.MouseMove += new MouseEventHandler(this.MainForm_MouseMove);
             this.ResumeLayout(false);
         }
 
