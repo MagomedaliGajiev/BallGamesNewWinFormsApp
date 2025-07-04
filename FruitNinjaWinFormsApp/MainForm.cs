@@ -1,4 +1,3 @@
-using static System.Reflection.Metadata.BlobBuilder;
 using Timer = System.Windows.Forms.Timer;
 
 namespace FruitNinjaWinFormsApp
