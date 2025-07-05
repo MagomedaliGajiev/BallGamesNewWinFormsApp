@@ -140,6 +140,13 @@ namespace Balls.Common
                    _radius * _radius;
         }
 
+        public virtual bool Contains(float x, float y)
+        {
+            return (x - _centerX) * (x - _centerX) +
+               (y - _centerY) * (y - _centerY) <=
+               _radius * _radius;
+        }
+
         protected void Clear()
         {
             var brush = new SolidBrush(_form.BackColor);

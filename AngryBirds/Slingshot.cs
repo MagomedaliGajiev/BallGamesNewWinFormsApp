@@ -12,7 +12,7 @@
             _possition = new Point(x, y);
         }
 
-        private void Draw(Graphics graphics)
+        public void Draw(Graphics graphics)
         {
             // Рисуем рогатку
             graphics.DrawLine(_pen,

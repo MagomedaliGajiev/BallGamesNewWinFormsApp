@@ -23,11 +23,12 @@ namespace AngryBirds
         {
             _vX = vX;
             _vY = vY;
-            _isLaunched= true;
+            _isLaunched = true;
         }
 
         public override void Move()
         {
+            if (!_isLaunched) return;
             base.Move();
             _vY += _g;
 

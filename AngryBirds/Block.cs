@@ -26,10 +26,9 @@
                 bird.GetCenterX() - bird.GetRadius(),
                 bird.GetCenterY() - bird.GetRadius(),
                 bird.GetRadius() * 2,
-                bird.GetRadius() * 2
-                );
+                bird.GetRadius() * 2);
 
-            return birdBounds.IntersectsWith(Rectangle.Round(birdBounds));
+            return Bounds.IntersectsWith(Rectangle.Round(birdBounds));
         }
 
         public void TakeDamage(int demage)

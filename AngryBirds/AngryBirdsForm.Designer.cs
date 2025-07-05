@@ -1,6 +1,6 @@
 ﻿namespace AngryBirds
 {
-    partial class Form1
+    partial class AngryBirdsForm
     {
         /// <summary>
         ///  Required designer variable.
