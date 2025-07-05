@@ -56,7 +56,7 @@ namespace Balls.Common
         {
             _timer.Start();
         }
-        public void Stop()
+        public virtual void Stop()
         {
             _timer.Stop();
         }
