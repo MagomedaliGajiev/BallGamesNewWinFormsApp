@@ -77,7 +77,8 @@
 
 
 ### Игра Fruit Ninja
-[![Fruit Ninja Clone](https://screenshots/fruit_ninja.png)](https://screenshots/fruit_ninja.png)
+[![Fruit Ninja Clone](https://github.com/user-attachments/assets/0c2c3f5a-4298-4207-ace5-3d71254ec50e)
+
 
 ### Упрощенная версия Angry Birds
 [![Angry Birds Simplified](https://screenshots/angry_birds.png)](https://screenshots/angry_birds.png)
