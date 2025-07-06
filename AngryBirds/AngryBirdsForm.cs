@@ -14,7 +14,6 @@ namespace AngryBirds
         private Point _dragEnd;
         private Pen _trajectoryPen = new Pen(Color.LightGray, 1);
         private int _score = 0;
-        private Label _scoreLabel;
         public AngryBirdsForm()
         {
             InitializeComponent();
@@ -38,15 +37,7 @@ namespace AngryBirds
             // Создание препятствий
             CreateLevel();
 
-            // Создание счетчика
-            _scoreLabel = new Label
-            {
-                Location = new Point(10, 10),
-                ForeColor = Color.Black,
-                Text = $"Очки: {_score}",
-                AutoSize = true
-            };
-            Controls.Add(_scoreLabel);
+            
 
             // Настройка таймера
             _gameTimer = new Timer();
@@ -113,6 +104,8 @@ namespace AngryBirds
             {
                 _gameTimer.Stop();
                 MessageBox.Show($"Уровень пройден! Ваш счет: {_score}", "Победа!");
+                _score = 0;
+                UpdateScore();
                 InitializeGame();
             }
 
@@ -126,7 +119,7 @@ namespace AngryBirds
 
         private void UpdateScore()
         {
-            _scoreLabel.Text = $"Очки: {_score}";
+            scoreLabel.Text = $"Очки: {_score}";
         }
 
         protected override void OnPaint(PaintEventArgs e)

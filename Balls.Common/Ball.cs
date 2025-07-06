@@ -111,7 +111,7 @@ namespace Balls.Common
             return _radius;
         }
 
-        public int DownSide()
+        public virtual int DownSide()
         {
             return _form.ClientSize.Height - _radius;
         } 
