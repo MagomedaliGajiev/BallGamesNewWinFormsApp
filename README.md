@@ -73,7 +73,8 @@
 <div align="center">
   
 ### Базовый симулятор шариков
-[![Ball Games Simulator](https://screenshots/ball_games.png)](https://screenshots/ball_games.png)
+[![Ball Games Simulator](https://github.com/user-attachments/assets/9bf20ea4-cf11-42c6-a371-52dc913952ad)
+
 
 ### Игра Fruit Ninja
 [![Fruit Ninja Clone](https://screenshots/fruit_ninja.png)](https://screenshots/fruit_ninja.png)
