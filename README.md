@@ -66,13 +66,8 @@
   - Общая библиотека Balls.Common  
   - Наследование и полиморфизм  
   - Событийно-ориентированная архитектура  
-  - Разделение логики и представления  
-
-## Как запустить
-1. Клонируйте репозиторий:
-```bash
-git clone https://github.com/yourusername/pet-projects.git
-
+  - Разделение логики и представления
+ 
 ## Скриншоты
 
 <div align="center">
@@ -87,3 +82,8 @@ git clone https://github.com/yourusername/pet-projects.git
 [![Angry Birds Simplified](https://screenshots/angry_birds.png)](https://screenshots/angry_birds.png)
 
 </div>
+
+## Как запустить
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/yourusername/pet-projects.git
