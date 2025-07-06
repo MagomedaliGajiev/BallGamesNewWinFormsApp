@@ -1,74 +1,74 @@
-# PET Projects: Collection of Windows Forms Games  
-This repository contains a collection of mini-games implemented in C# using Windows Forms. All games are built on a common ball framework (Balls.Common).
+# PET-проекты: Коллекция игр на Windows Forms
+Этот репозиторий содержит коллекцию мини-игр, реализованных на C# с использованием Windows Forms. Все игры построены на основе общего фреймворка для работы с шариками (Balls.Common).
 
-## List of Projects  
+## Список проектов
 
-### 1. BallGamesNewWinFormsApp  
-**Description**: Basic ball simulator with various modes  
-**Features**:  
-- Create static balls on click  
-- Generate multiple moving balls  
-- Count balls on the field  
-**Technologies**: Windows Forms, Double Buffering  
+### 1. BallGamesNewWinFormsApp
+**Описание**: Базовый симулятор шариков с различными режимами  
+**Особенности**:  
+- Создание статических шариков по клику  
+- Генерация множества движущихся шариков  
+- Подсчет шариков на поле  
+**Технологии**: Windows Forms, Double Buffering  
 
-### 2. BallCatcherGame  
-**Description**: "Ball Catcher" game  
-**Features**:  
-- Catch moving balls with mouse clicks  
-- Score tracking system  
-- Win/loss conditions  
-**Technologies**: Windows Forms, OOP, Event Handling  
+### 2. BallCatcherGame
+**Описание**: Игра "Ловец шариков"  
+**Особенности**:  
+- Ловля движущихся шариков кликом мыши  
+- Система подсчета очков  
+- Условия победы/поражения  
+**Технологии**: Windows Forms, ООП, Обработка событий  
 
-### 3. BiliyardBallsGame  
-**Description**: Billiard simulator with two teams  
-**Features**:  
-- Red vs. blue balls  
-- Collision physics  
-- Hit counting system  
-**Technologies**: Windows Forms, Motion Physics, Event System  
+### 3. BiliyardBallsGame
+**Описание**: Симулятор бильярда с двумя командами  
+**Особенности**:  
+- Красные vs синие шарики  
+- Физика столкновений  
+- Система подсчета ударов  
+**Технологии**: Windows Forms, Физика движения, Система событий  
 
-### 4. SalutGame  
-**Description**: Firework simulator  
-**Features**:  
-- Rocket launches  
-- Realistic explosions  
-- Particle gravity  
-**Technologies**: Windows Forms, Timers, Animation  
+### 4. SalutGame
+**Описание**: Симулятор фейерверка  
+**Особенности**:  
+- Запуск ракет  
+- Реалистичные взрывы  
+- Гравитация для частиц  
+**Технологии**: Windows Forms, Таймеры, Анимация  
 
-### 5. FruitNinjaWinFormsApp  
-**Description**: "Fruit Ninja" clone  
-**Features**:  
-- Slicable fruits  
-- Game-ending bombs  
-- Time-slowing system  
-- Score tracking  
-**Technologies**: Windows Forms, Collision Detection, Game State Management  
+### 5. FruitNinjaWinFormsApp
+**Описание**: Клон "Fruit Ninja"  
+**Особенности**:  
+- Режущиеся фрукты  
+- Бомбы, завершающие игру  
+- Система замедления времени  
+- Подсчет очков  
+**Технологии**: Windows Forms, Детекция столкновений, Управление состоянием игры  
 
-### 6. AngryBirds  
-**Description**: Simplified "Angry Birds"  
-**Features**:  
-- Slingshot mechanics  
-- Bird flight physics  
-- Destructible blocks  
-- Destroyable pigs  
-**Technologies**: Windows Forms, Trajectory Physics, Collision Detection  
+### 6. AngryBirds
+**Описание**: Упрощенная версия "Angry Birds"  
+**Особенности**:  
+- Механика рогатки  
+- Физика полета птицы  
+- Разрушаемые блоки  
+- Уничтожаемые свиньи  
+**Технологии**: Windows Forms, Физика траектории, Детекция столкновений  
 
-## General Technologies  
-- **Programming Language**: C# (.NET 8.0)  
-- **Platform**: Windows Forms  
-- **Key Concepts**:  
-  - Object-Oriented Programming (OOP)  
-  - Mouse/keyboard event handling  
-  - Double buffering for smooth animation  
-  - Timer operations  
-  - Custom controls  
-- **Architecture**:  
-  - Shared `Balls.Common` library  
-  - Inheritance and polymorphism  
-  - Event-driven architecture  
-  - Separation of logic and presentation  
+## Общие технологии
+- **Язык программирования**: C# (.NET 8.0)  
+- **Платформа**: Windows Forms  
+- **Ключевые концепции**:  
+  - Объектно-ориентированное программирование (ООП)  
+  - Обработка событий мыши/клавиатуры  
+  - Двойная буферизация для плавной анимации  
+  - Работа с таймерами  
+  - Пользовательские элементы управления  
+- **Архитектура**:  
+  - Общая библиотека Balls.Common  
+  - Наследование и полиморфизм  
+  - Событийно-ориентированная архитектура  
+  - Разделение логики и представления  
 
-## How to Run  
-1. Clone the repository:  
+## Как запустить
+1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/yourusername/pet-projects.git
