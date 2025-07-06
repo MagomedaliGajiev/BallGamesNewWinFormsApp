@@ -81,7 +81,8 @@
 
 
 ### Упрощенная версия Angry Birds
-[![Angry Birds Simplified](https://screenshots/angry_birds.png)](https://screenshots/angry_birds.png)
+[![Angry Birds Simplified](https://github.com/user-attachments/assets/f9d304a7-d4ea-4b04-b34d-2f813171e03c)
+
 
 </div>
 
