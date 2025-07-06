@@ -72,3 +72,18 @@
 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/yourusername/pet-projects.git
+
+## Скриншоты
+
+<div align="center">
+  
+### Базовый симулятор шариков
+[![Ball Games Simulator](https://screenshots/ball_games.png)](https://screenshots/ball_games.png)
+
+### Игра Fruit Ninja
+[![Fruit Ninja Clone](https://screenshots/fruit_ninja.png)](https://screenshots/fruit_ninja.png)
+
+### Упрощенная версия Angry Birds
+[![Angry Birds Simplified](https://screenshots/angry_birds.png)](https://screenshots/angry_birds.png)
+
+</div>
