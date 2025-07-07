@@ -89,4 +89,4 @@
 ## Как запустить
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/MagomedaliGajiev/pet-projects.git
+git clone https://github.com/MagomedaliGajiev/BallGamesNewWinFormsApp.git
